@@ -285,7 +285,7 @@ Through this project, I have practised:
 B.Tech in Computer Science and Engineering — Artificial Intelligence and Machine Learning
 
 - GitHub: [https://github.com/midhun-kunjumon](https://github.com/midhun-kunjumon)
-- LinkedIn: [Midhun Kunjumon](www.linkedin.com/in/midhun-kunjumon-7908422a1)
+- LinkedIn: [www.linkedin.com/in/midhun-kunjumon-7908422a1](www.linkedin.com/in/midhun-kunjumon-7908422a1)
 
 
 ---
