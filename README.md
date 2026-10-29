@@ -10,7 +10,6 @@
   Browse products, manage your cart, save favourites, and manage orders through a responsive shopping experience.
 </p>
 
-## 🧰 Tech Stack
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 8"/>
