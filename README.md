@@ -284,15 +284,9 @@ Through this project, I have practised:
 
 B.Tech in Computer Science and Engineering — Artificial Intelligence and Machine Learning
 
-- GitHub: [YOUR_GITHUB_PROFILE](https://github.com/YOUR_USERNAME)
-- LinkedIn: [YOUR_LINKEDIN_PROFILE](YOUR_LINKEDIN_URL)
-- Portfolio: [YOUR_PORTFOLIO_URL](YOUR_PORTFOLIO_URL)
+- GitHub: [https://github.com/midhun-kunjumon](https://github.com/midhun-kunjumon)
+- LinkedIn: [Midhun Kunjumon](www.linkedin.com/in/midhun-kunjumon-7908422a1)
 
-## 📄 License
-
-This project is currently shared for portfolio and learning purposes.
-
-<!-- If you choose an open-source license, add its name and a LICENSE file here. -->
 
 ---
 
