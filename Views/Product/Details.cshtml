@@ -1,0 +1,74 @@
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<link rel="stylesheet" href="~/css/product-details.css" asp-append-version="true" />
+
+<section class="product-details-page">
+
+    <div class="container">
+
+        <!-- Product Details -->
+        <div id="product-details-container"
+             data-product-id="@ViewBag.ProductId"
+             data-customer-id="@ViewBag.CustomerId">
+
+            <div id="product-details-loading">
+                <span>Loading product...</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RELATED PRODUCTS
+     ===================================================== -->
+
+<section class="related-products-section">
+
+    <div class="container">
+
+        <div class="related-products-header">
+            <h2>Related Products</h2>
+        </div>
+
+
+        <div class="related-products-slider">
+
+            <button type="button"
+                    class="related-slider-btn related-prev">
+                &#10094;
+            </button>
+
+
+            <div id="related-products-container"
+                 class="related-products-track">
+
+                <div class="related-products-loading">
+                    Loading related products...
+                </div>
+
+            </div>
+
+
+            <button type="button"
+                    class="related-slider-btn related-next">
+                &#10095;
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+@section Scripts {
+
+    <script src="~/js/product-details.js" asp-append-version="true"></script>
+
+}

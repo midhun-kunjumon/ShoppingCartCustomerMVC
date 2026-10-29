@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "My Wishlist";
+}
+
+<link rel="stylesheet" href="~/css/wishlist.css" asp-append-version="true" />
+
+<section class="wishlist-page">
+    <div class="container">
+
+        <div class="wishlist-header">
+            <h1>My Wishlist</h1>
+        </div>
+
+        <div id="wishlist-loading" class="text-center py-4 text-muted">
+            <div class="spinner-border text-primary me-2" role="status"></div>
+            Loading your wishlist...
+        </div>
+
+        <div id="wishlist-empty" class="wishlist-empty" style="display:none;">
+            <div class="wishlist-empty-icon">
+                <i class="fa-regular fa-heart"></i>
+            </div>
+            <h2>Your wishlist is empty</h2>
+            <p>Save items you like to view or purchase them later.</p>
+            <a href="/" class="btn btn-primary px-4 py-2">
+                Continue Shopping
+            </a>
+        </div>
+
+        <div id="wishlist-content" class="wishlist-card" data-customer-id="@ViewBag.CustomerId" style="display:none;">
+            <div id="wishlist-items-container">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/wishlist.js" asp-append-version="true"></script>
+}

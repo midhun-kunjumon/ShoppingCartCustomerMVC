@@ -1,0 +1,66 @@
+@{
+    ViewData["Title"] = "Payment Gateway Simulation";
+}
+
+<link rel="stylesheet" href="~/css/order.css" asp-append-version="true" />
+
+<section class="order-page">
+    <div class="container">
+
+        <div class="order-header text-center">
+            <h1>Cartly Secure Payment Gateway</h1>
+            <p class="text-muted">Simulated Payment Processing Page</p>
+        </div>
+
+        <div id="payment-loading" class="text-center py-5 text-muted">
+            <div class="spinner-border text-primary me-2" role="status"></div>
+            Loading payment details...
+        </div>
+
+        <div id="payment-card" class="order-success-card" data-customer-id="@ViewBag.CustomerId" data-order-id="@ViewBag.OrderId" style="display:none; max-width: 580px;">
+
+            <div class="mb-3 text-primary display-4">
+                <i class="fa-solid fa-credit-card"></i>
+            </div>
+
+            <h2 class="h4 font-weight-bold text-dark mb-2">Complete Your Payment</h2>
+            <p class="text-muted small mb-4">Please review your order total and select your payment action below.</p>
+
+            <div class="order-details-box mb-4">
+                <div>
+                    <span class="text-muted">Order Reference:</span>
+                    <strong id="pay-order-id">#@ViewBag.OrderId</strong>
+                </div>
+                <div>
+                    <span class="text-muted">Order Date:</span>
+                    <span id="pay-order-date">-</span>
+                </div>
+                <div>
+                    <span class="text-muted">Payment Method:</span>
+                    <strong class="text-dark">Online Payment (Simulated)</strong>
+                </div>
+                <div class="border-top pt-2 mt-2">
+                    <span class="text-muted font-weight-bold">Amount Payable:</span>
+                    <strong id="pay-order-total" class="text-primary font-weight-bold fs-5">₹0.00</strong>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column gap-2">
+                <button type="button" id="payNowBtn" class="btn btn-primary btn-lg w-100 font-weight-bold">
+                    <i class="fa-solid fa-lock me-2"></i> Pay Now (₹<span id="btn-pay-amount">0.00</span>)
+                </button>
+                <button type="button" id="cancelPaymentBtn" class="btn btn-outline-danger w-100 font-weight-bold mt-2">
+                    Cancel Payment
+                </button>
+            </div>
+
+            <div id="paymentMessage" class="mt-3 text-center small font-weight-bold"></div>
+
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/payment.js" asp-append-version="true"></script>
+}

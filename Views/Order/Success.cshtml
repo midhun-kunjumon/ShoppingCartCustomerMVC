@@ -1,0 +1,115 @@
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<link rel="stylesheet" href="~/css/order.css" asp-append-version="true" />
+
+<section class="order-page">
+    <div class="container">
+
+        <div id="success-loading" class="text-center py-5 text-muted">
+            <div class="spinner-border text-primary me-2" role="status"></div>
+            Confirming your order...
+        </div>
+
+        <div id="success-card" class="order-success-card" data-customer-id="@ViewBag.CustomerId" data-order-id="@ViewBag.OrderId" style="display:none;">
+
+            <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h1>Order Placed Successfully!</h1>
+            <p>Thank you for your purchase with Cartly. Your order is being processed.</p>
+
+            <div class="order-details-box">
+                <div>
+                    <span class="text-muted">Order ID:</span>
+                    <strong id="confirm-order-id">#@ViewBag.OrderId</strong>
+                </div>
+                <div>
+                    <span class="text-muted">Order Date:</span>
+                    <strong id="confirm-order-date">-</strong>
+                </div>
+                <div>
+                    <span class="text-muted">Expected Delivery:</span>
+                    <strong id="confirm-expected-delivery" class="text-success">-</strong>
+                </div>
+                <div>
+                    <span class="text-muted">Delivery Date:</span>
+                    <strong id="confirm-actual-delivery" class="text-dark">-</strong>
+                </div>
+                <div>
+                    <span class="text-muted">Total Amount:</span>
+                    <strong id="confirm-order-total" class="text-primary">₹0.00</strong>
+                </div>
+                <div>
+                    <span class="text-muted">Order Status:</span>
+                    <span id="confirm-order-status" class="badge bg-warning text-dark text-uppercase">Pending</span>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="/Order/Details/@ViewBag.OrderId" class="btn btn-primary px-4 py-2 font-weight-bold">
+                    View Order Details
+                </a>
+                <a href="/Order/Index" class="btn btn-outline-primary px-4 py-2 font-weight-bold">
+                    My Orders
+                </a>
+                <a href="/" class="btn btn-link text-muted py-2">
+                    Continue Shopping
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var customerId = $("#success-card").attr("data-customer-id");
+            var orderId = $("#success-card").attr("data-order-id");
+
+            if (!customerId || !orderId) {
+                $("#success-loading").text("Order placed successfully!");
+                return;
+            }
+
+            apiRequest({
+                url: "/api/OrderApi/" + customerId + "/" + orderId,
+                type: "GET"
+            })
+            .done(function (order) {
+                $("#success-loading").hide();
+                $("#success-card").show();
+
+                $("#confirm-order-id").text("#" + order.orderID);
+                $("#confirm-order-date").text(order.orderDate ? new Date(order.orderDate).toLocaleDateString() : "-");
+
+                var expDateText = "-";
+                if (order.expectedDeliveryDate) {
+                    expDateText = new Date(order.expectedDeliveryDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+                } else if (order.orderDate) {
+                    var d = new Date(order.orderDate);
+                    d.setDate(d.getDate() + 3);
+                    expDateText = d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+                }
+                $("#confirm-expected-delivery").text(expDateText);
+
+                var actualDateText = "Not delivered yet";
+                if (order.deliveryDate) {
+                    actualDateText = new Date(order.deliveryDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+                }
+                $("#confirm-actual-delivery").text(actualDateText);
+
+                $("#confirm-order-total").text("₹" + Number(order.totalAmount).toFixed(2));
+                $("#confirm-order-status").text(order.orderStatus || "Pending");
+            })
+            .fail(function () {
+                $("#success-loading").hide();
+                $("#success-card").show();
+            });
+        });
+    </script>
+}

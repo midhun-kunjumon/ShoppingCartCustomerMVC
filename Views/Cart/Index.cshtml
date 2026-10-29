@@ -1,0 +1,107 @@
+@{
+    ViewData["Title"] = "My Cart";
+}
+
+<link rel="stylesheet" href="~/css/cart.css" />
+
+<section class="cart-page">
+
+    <div class="container">
+
+        <div class="cart-header">
+            <h1>My Cart</h1>
+            <p>Your selected products</p>
+        </div>
+
+        <div id="cart-loading" class="cart-loading">
+            Loading your cart...
+        </div>
+
+        <div id="cart-empty" class="cart-empty" style="display:none;">
+
+            <div class="cart-empty-icon">
+                🛒
+            </div>
+
+            <h2>Your cart is empty</h2>
+
+            <p>
+                You haven't added any products to your cart yet.
+            </p>
+
+            <a href="/" class="continue-shopping-btn">
+                Continue Shopping
+            </a>
+
+        </div>
+
+
+        <div id="cart-content"
+             data-customer-id="@ViewBag.CustomerId"
+             style="display:none;">
+
+            <div class="cart-layout">
+
+                <!-- CART ITEMS -->
+                <div class="cart-items-section">
+
+                    <div id="cart-items-container">
+                    </div>
+
+                </div>
+
+
+                <!-- CART SUMMARY -->
+                <div class="cart-summary">
+
+                    <h2>Cart Summary</h2>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">₹0.00</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Expected Delivery</span>
+                        <span id="cart-expected-delivery" class="text-success font-weight-bold" style="font-weight:600; color:#388e3c;">-</span>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span id="cart-total">₹0.00</span>
+                    </div>
+
+                    <button type="button"
+                            id="checkout-btn"
+                            class="checkout-btn">
+                        Proceed to Checkout
+                    </button>
+
+                    <button type="button"
+                            id="clearCartButton"
+                            class="clear-cart-button">
+                        Clear Cart
+                    </button>
+
+                    <a href="/Product"
+                       class="continue-shopping-link">
+                        Continue Shopping
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section Scripts {
+
+    <script src="~/js/cart.js"></script>
+
+}

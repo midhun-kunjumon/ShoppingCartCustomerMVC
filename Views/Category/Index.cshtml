@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Categories";
+}
+
+<link rel="stylesheet" href="~/css/category.css" />
+
+<section class="cartly-section category-page">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-label">
+                    EXPLORE
+                </span>
+
+                <h2>
+                    Shop by Category
+                </h2>
+
+                <p class="text-muted">
+                    Browse categories and explore subcategories.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Categories will be loaded dynamically -->
+        <div id="category-container">
+
+            <div class="text-center py-5"
+                 id="category-loading">
+
+                <span>
+                    Loading categories...
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+@section Scripts {
+
+    <script src="~/js/category.js"></script>
+
+}

@@ -1,0 +1,124 @@
+@model ShoppingCartCustomerMVC.Models.ViewModels.Customer.RegisterViewModel
+
+@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+    ViewData["Title"] = "Create Account";
+}
+
+<div class="login-page">
+
+    <!-- Cartly Logo -->
+    <div class="cartly-logo-container">
+        <a href="/">
+            <img src="~/images/cartly-logo.png"
+                 alt="Cartly"
+                 class="cartly-logo" />
+        </a>
+    </div>
+
+    <!-- Register Card -->
+    <div class="login-card">
+
+        <h1>Create Account</h1>
+
+        <form id="registerForm">
+
+            <!-- Full Name -->
+            <div class="login-field">
+                <label for="CustomerName">Full Name</label>
+                <input id="CustomerName"
+                       name="CustomerName"
+                       type="text"
+                       class="login-input"
+                       placeholder="Enter your full name"
+                       required />
+            </div>
+
+            <!-- Email -->
+            <div class="login-field">
+                <label for="Email">Email Address</label>
+                <input id="Email"
+                       name="Email"
+                       type="email"
+                       class="login-input"
+                       placeholder="Enter your email"
+                       autocomplete="email"
+                       required />
+            </div>
+
+            <!-- Phone -->
+            <div class="login-field">
+                <label for="Phone">Phone Number (Optional)</label>
+                <input id="Phone"
+                       name="Phone"
+                       type="tel"
+                       class="login-input"
+                       placeholder="Enter phone number" />
+            </div>
+
+            <!-- City -->
+            <div class="login-field">
+                <label for="City">City (Optional)</label>
+                <input id="City"
+                       name="City"
+                       type="text"
+                       class="login-input"
+                       placeholder="Enter city" />
+            </div>
+
+            <!-- Password -->
+            <div class="login-field">
+                <label for="Password">Password</label>
+                <input id="Password"
+                       name="Password"
+                       type="password"
+                       class="login-input"
+                       placeholder="Enter password"
+                       autocomplete="new-password"
+                       required />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="login-field">
+                <label for="ConfirmPassword">Confirm Password</label>
+                <input id="ConfirmPassword"
+                       name="ConfirmPassword"
+                       type="password"
+                       class="login-input"
+                       placeholder="Re-enter password"
+                       autocomplete="new-password"
+                       required />
+            </div>
+
+            <!-- Register Button -->
+            <button type="submit" id="registerSubmitBtn" class="login-button mt-3">
+                Create Account
+            </button>
+
+        </form>
+
+        <!-- Message Alert -->
+        <div id="registerMessage" class="login-message mt-3"></div>
+
+    </div>
+
+    <!-- Back to Login -->
+    <div class="register-section">
+
+        <div class="register-line">
+            Already have an account?
+        </div>
+
+        <a asp-controller="Account"
+           asp-action="Login"
+           class="register-link">
+            Sign In Here
+        </a>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/register.js" asp-append-version="true"></script>
+}

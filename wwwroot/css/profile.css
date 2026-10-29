@@ -1,0 +1,130 @@
+/* Profile & Account Pages */
+.profile-page {
+    padding: 30px 0 60px;
+    background-color: #f1f3f6;
+    min-height: calc(100vh - 180px);
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    margin-bottom: 24px;
+}
+
+.profile-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.profile-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 32px;
+    margin-bottom: 24px;
+}
+
+.profile-avatar {
+    width: 72px;
+    height: 72px;
+    background: #2874f0;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.profile-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .profile-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.profile-field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-field-group label {
+    font-size: 13px;
+    color: #878787;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.profile-field-group input {
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #212121;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+
+.profile-field-group input:focus {
+    border-color: #2874f0;
+    outline: none;
+}
+
+.profile-field-group input[readonly] {
+    background-color: #f9f9f9;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.profile-actions {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+}
+
+.save-profile-btn {
+    background-color: #fb641b;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.save-profile-btn:hover {
+    background-color: #e65611;
+}
+
+.save-profile-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.profile-status-msg {
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.msg-success {
+    color: #388e3c;
+}
+
+.msg-error {
+    color: #d32f2f;
+}

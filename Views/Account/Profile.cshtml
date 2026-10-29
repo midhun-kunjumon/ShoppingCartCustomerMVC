@@ -1,0 +1,72 @@
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+
+<section class="profile-page">
+    <div class="container profile-container">
+        
+        <div class="profile-header">
+            <h1>My Profile</h1>
+        </div>
+
+        <div id="profile-loading" class="text-center py-4 text-muted">
+            <div class="spinner-border text-primary me-2" role="status"></div>
+            Loading profile information...
+        </div>
+
+        <div id="profile-card" class="profile-card" data-customer-id="@ViewBag.CustomerId" style="display:none;">
+
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div id="avatar-circle" class="profile-avatar">C</div>
+                <div>
+                    <h3 id="display-name" class="m-0 font-weight-bold" style="font-size:20px; font-weight:600;">Customer Name</h3>
+                    <span id="display-auth-provider" class="badge bg-secondary text-capitalize mt-1">Local</span>
+                </div>
+            </div>
+
+            <form id="profileForm">
+
+                <div class="profile-info-grid">
+
+                    <div class="profile-field-group">
+                        <label for="CustomerName">Full Name</label>
+                        <input type="text" id="CustomerName" name="CustomerName" required />
+                    </div>
+
+                    <div class="profile-field-group">
+                        <label for="Email">Email Address (Read Only)</label>
+                        <input type="email" id="Email" name="Email" readonly />
+                    </div>
+
+                    <div class="profile-field-group">
+                        <label for="Phone">Phone Number</label>
+                        <input type="tel" id="Phone" name="Phone" placeholder="Enter phone number" />
+                    </div>
+
+                    <div class="profile-field-group">
+                        <label for="City">City</label>
+                        <input type="text" id="City" name="City" placeholder="Enter city" />
+                    </div>
+
+                </div>
+
+                <div class="profile-actions">
+                    <button type="submit" id="saveProfileBtn" class="save-profile-btn">
+                        Save Changes
+                    </button>
+                </div>
+
+            </form>
+
+            <div id="profileMessage" class="profile-status-msg"></div>
+
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/profile.js" asp-append-version="true"></script>
+}

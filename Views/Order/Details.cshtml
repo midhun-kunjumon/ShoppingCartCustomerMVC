@@ -1,0 +1,133 @@
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<link rel="stylesheet" href="~/css/order.css" asp-append-version="true" />
+
+<section class="order-page">
+    <div class="container">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 font-weight-bold mb-0">Order Details</h1>
+            <a href="/Order/Index" class="btn btn-outline-secondary btn-sm">
+                <i class="fa-solid fa-arrow-left me-1"></i> Back to Orders
+            </a>
+        </div>
+
+        <div id="details-loading" class="text-center py-5 text-muted">
+            <div class="spinner-border text-primary me-2" role="status"></div>
+            Loading order details...
+        </div>
+
+        <div id="details-error" class="text-center py-5 bg-white rounded shadow-sm" style="display:none;">
+            <h4 class="text-danger">Order Not Found</h4>
+            <p class="text-muted">The requested order could not be loaded or access was denied.</p>
+            <a href="/Order/Index" class="btn btn-primary mt-2">View My Orders</a>
+        </div>
+
+        <div id="details-content" class="checkout-layout" data-customer-id="@ViewBag.CustomerId" data-order-id="@ViewBag.OrderId" style="display:none;">
+
+            <div class="checkout-main">
+
+                <!-- Header Banner Card -->
+                <div class="checkout-section-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h2 class="m-0 border-0 p-0">Order #<span id="detail-order-id">@ViewBag.OrderId</span></h2>
+                            <small class="text-muted">Placed on <span id="detail-order-date">-</span></small>
+                        </div>
+                        <span id="detail-order-status" class="order-status-badge status-pending">Pending</span>
+                    </div>
+                </div>
+
+                <!-- Customer & Delivery Info Card -->
+                <div class="checkout-section-card">
+                    <h2>Customer & Delivery Details</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <label class="text-muted small font-weight-bold d-block">NAME</label>
+                            <span id="detail-cust-name" class="font-weight-bold text-dark">-</span>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label class="text-muted small font-weight-bold d-block">EMAIL</label>
+                            <span id="detail-cust-email" class="text-dark">-</span>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label class="text-muted small font-weight-bold d-block">PHONE</label>
+                            <span id="detail-cust-phone" class="text-dark">-</span>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label class="text-muted small font-weight-bold d-block">DELIVERY ADDRESS / CITY</label>
+                            <span id="detail-cust-city" class="text-dark">-</span>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label class="text-muted small font-weight-bold d-block">EXPECTED DELIVERY</label>
+                            <span id="detail-expected-delivery" class="text-success font-weight-bold">-</span>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label class="text-muted small font-weight-bold d-block">DELIVERY DATE</label>
+                            <span id="detail-actual-delivery" class="text-dark font-weight-bold">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Items Card -->
+                <div class="checkout-section-card">
+                    <h2>Items Ordered</h2>
+                    <div id="detail-items-container">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Order Total Summary Sidebar -->
+            <div class="checkout-sidebar">
+
+                <div class="order-summary-card">
+                    <h2>Payment & Summary</h2>
+
+                    <div class="summary-row">
+                        <span>Payment Method</span>
+                        <strong id="detail-payment-method" class="text-dark">Cash on Delivery</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Payment Status</span>
+                        <span id="detail-payment-status" class="badge bg-secondary">Pending</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Items Subtotal</span>
+                        <span id="detail-summary-subtotal">₹0.00</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Delivery Charge</span>
+                        <span class="text-success font-weight-bold">FREE</span>
+                    </div>
+
+                    <div class="summary-row summary-total">
+                        <span>Total Amount</span>
+                        <span id="detail-summary-total" class="text-primary">₹0.00</span>
+                    </div>
+
+                    <!-- Cancel Order Action -->
+                    <div id="cancel-order-container" class="mt-4" style="display:none;">
+                        <button type="button" id="btnCancelOrder" class="btn btn-outline-danger w-100 font-weight-bold">
+                            <i class="fa-solid fa-ban me-1"></i> Cancel Order
+                        </button>
+                    </div>
+
+                    <div id="cancelAlertMsg" class="mt-3 small font-weight-bold text-center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/orders.js" asp-append-version="true"></script>
+}

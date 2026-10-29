@@ -1,0 +1,631 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero / Promotional Carousel -->
+<section class="cartly-hero">
+
+    <div class="container-fluid px-lg-5">
+
+        <div id="cartlyHeroCarousel"
+             class="carousel slide"
+             data-bs-ride="carousel"
+             data-bs-interval="4000">
+
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+
+                <button type="button"
+                        data-bs-target="#cartlyHeroCarousel"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-current="true"
+                        aria-label="Slide 1">
+                </button>
+
+                <button type="button"
+                        data-bs-target="#cartlyHeroCarousel"
+                        data-bs-slide-to="1"
+                        aria-label="Slide 2">
+                </button>
+
+                <button type="button"
+                        data-bs-target="#cartlyHeroCarousel"
+                        data-bs-slide-to="2"
+                        aria-label="Slide 3">
+                </button>
+
+            </div>
+
+
+            <!-- Slides -->
+            <div class="carousel-inner">
+
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+
+                    <div class="hero-slide hero-slide-one">
+
+                        <div class="hero-slide-content">
+
+                            <span class="hero-tag">
+                                CARTLY SPECIAL
+                            </span>
+
+                            <h1>
+                                Big Deals.
+                                <br />
+                                Bigger Savings.
+                            </h1>
+
+                            <p>
+                                Discover amazing products at prices
+                                you'll love.
+                            </p>
+
+                            <a href="#featured-products"
+                               class="hero-shop-button">
+                                Shop Now
+                            </a>
+
+                        </div>
+
+                        <div class="hero-slide-visual">
+
+                            <div class="sale-circle">
+                                <span>UP TO</span>
+                                <strong>50%</strong>
+                                <span>OFF</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+
+                    <div class="hero-slide hero-slide-two">
+
+                        <div class="hero-slide-content">
+
+                            <span class="hero-tag">
+                                NEW COLLECTION
+                            </span>
+
+                            <h1>
+                                Fresh Styles.
+                                <br />
+                                New Arrivals.
+                            </h1>
+
+                            <p>
+                                Explore our latest collection and
+                                find your next favourite.
+                            </p>
+
+                            <a href="/Category/Index?categoryId=2"
+                               class="hero-shop-button">
+                                Explore Now
+                            </a>
+
+                        </div>
+
+                        <div class="hero-slide-visual">
+
+                            <div class="collection-card">
+
+                                <span>
+                                    NEW
+                                </span>
+
+                                <strong>
+                                    2026
+                                </strong>
+
+                                <small>
+                                    COLLECTION
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+
+                    <div class="hero-slide hero-slide-three">
+
+                        <div class="hero-slide-content">
+
+                            <span class="hero-tag">
+                                PHONE DEALS
+                            </span>
+
+                            <h1>
+                                Upgrade Your Phone.
+                                <br />
+                                Save More.
+                            </h1>
+
+                            <p>
+                                Get amazing deals on the latest
+                                smartphones at Cartly.
+                            </p>
+
+                            <a href="/Product/SubCategory/2"
+                               class="hero-shop-button">
+                                Shop Phones
+                            </a>
+
+                        </div>
+
+                        <div class="hero-slide-visual">
+
+                            <div class="discount-card">
+
+                                <span>
+                                    UP TO
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                                <small>
+                                    OFF
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Previous -->
+            <button class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#cartlyHeroCarousel"
+                    data-bs-slide="prev">
+
+                <span class="carousel-control-prev-icon"></span>
+
+                <span class="visually-hidden">
+                    Previous
+                </span>
+
+            </button>
+
+
+            <!-- Next -->
+            <button class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#cartlyHeroCarousel"
+                    data-bs-slide="next">
+
+                <span class="carousel-control-next-icon"></span>
+
+                <span class="visually-hidden">
+                    Next
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Shop by Category -->
+<section class="cartly-section category-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-label">
+                    EXPLORE
+                </span>
+
+                <h2>
+                    Shop by Category
+                </h2>
+            </div>
+
+            <a asp-controller="Category" asp-action="Index" id="view-all-categories" class="view-all">
+                View All →
+            </a>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- Electronics -->
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <a href="/Category/Index?categoryId=1" class="category-card home-category-card" data-category-id="1">
+
+                    <div class="category-image">
+                        <img src="~/category_images/electronics.png"
+                             alt="Electronics" />
+                    </div>
+
+                    <div class="category-content">
+
+                        <h5>
+                            Electronics
+                        </h5>
+
+                        <p>
+                            Latest technology
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- Fashion -->
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <a href="/Category/Index?categoryId=2" class="category-card home-category-card" data-category-id="2">
+
+                    <div class="category-image">
+                        <img src="~/category_images/fashion.jpg"
+                             alt="Fashion" />
+                    </div>
+
+                    <div class="category-content">
+
+                        <h5>
+                            Fashion
+                        </h5>
+
+                        <p>
+                            Explore collection
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- Groceries -->
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <a href="/Category/Index?categoryId=3" class="category-card home-category-card" data-category-id="3">
+
+                    <div class="category-image">
+                        <img src="~/category_images/groceries.png"
+                             alt="Groceries" />
+                    </div>
+
+                    <div class="category-content">
+
+                        <h5>
+                            Groceries
+                        </h5>
+
+                        <p>
+                            Everyday essentials
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- Home Appliances -->
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <a href="/Category/Index?categoryId=5" class="category-card home-category-card" data-category-id="5">
+
+                    <div class="category-image">
+                        <img src="~/category_images/home-appliances.jpg"
+                             alt="Home Appliances" />
+                    </div>
+
+                    <div class="category-content">
+
+                        <h5>
+                            Home Appliances
+                        </h5>
+
+                        <p>
+                            Make your home better
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Featured Products -->
+<section id="featured-products"
+         class="cartly-section products-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    OUR COLLECTION
+                </span>
+
+                <h2>
+                    Featured Products
+                </h2>
+
+            </div>
+
+            <a asp-controller="Category" asp-action="Index" class="view-all">
+                View All →
+            </a>
+
+        </div>
+
+
+        <div class="row g-4" id="featured-products-container" data-customer-id="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value">
+
+
+            <!-- Product 1 -->
+            <div class="col-6 col-md-3">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <img class="product-img"
+                             src=""
+                             alt="Product Image">
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Product
+                        </span>
+
+                        <h5 class="product-name">
+                            Loading...
+                        </h5>
+
+                        <p class="product-description">
+                            Loading product description...
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹0
+                            </span>
+
+                            <button class="cart-button"
+                                    type="button">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 2 -->
+            <div class="col-6 col-md-3">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <img class="product-img"
+                             src=""
+                             alt="Product Image">
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Product
+                        </span>
+
+                        <h5 class="product-name">
+                            Loading...
+                        </h5>
+
+                        <p class="product-description">
+                            Loading product description...
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹0
+                            </span>
+
+                            <button class="cart-button"
+                                    type="button">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 3 -->
+            <div class="col-6 col-md-3">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <img class="product-img"
+                             src=""
+                             alt="Product Image">
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Product
+                        </span>
+
+                        <h5 class="product-name">
+                            Loading...
+                        </h5>
+
+                        <p class="product-description">
+                            Loading product description...
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹0
+                            </span>
+
+                            <button class="cart-button"
+                                    type="button">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 4 -->
+            <div class="col-6 col-md-3">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <img class="product-img"
+                             src=""
+                             alt="Product Image">
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Product
+                        </span>
+
+                        <h5 class="product-name">
+                            Loading...
+                        </h5>
+
+                        <p class="product-description">
+                            Loading product description...
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹0
+                            </span>
+
+                            <button class="cart-button"
+                                    type="button">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Promotional Section -->
+<section class="cartly-promo">
+
+    <div class="container">
+
+        <div class="promo-content">
+
+            <span>
+                CARTLY COLLECTION
+            </span>
+
+            <h2>
+                Find something you'll love.
+            </h2>
+
+            <p>
+                Browse our collection and discover your next favourite product.
+            </p>
+
+            <a href="#featured-products"
+               class="btn btn-light">
+                Start Shopping
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section Scripts {
+    <script src="~/js/home.js"></script>
+}

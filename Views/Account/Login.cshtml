@@ -1,0 +1,93 @@
+@model ShoppingCartCustomerMVC.Models.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-page">
+
+    <!-- Cartly Logo -->
+    <div class="cartly-logo-container">
+        <img src="~/images/cartly-logo.png"
+             alt="Cartly"
+             class="cartly-logo" />
+    </div>
+
+    <!-- Login Card -->
+    <div class="login-card">
+
+        <h1>Login</h1>
+
+        <form id="loginForm" data-return-url="@ViewBag.ReturnUrl">
+
+            <!-- Email -->
+            <div class="login-field">
+                <label asp-for="Email"></label>
+                <input asp-for="Email"
+                       class="login-input"
+                       autocomplete="email" />
+            </div>
+
+            <!-- Password -->
+            <div class="login-field">
+                <label asp-for="Password"></label>
+                <input asp-for="Password"
+                       type="password"
+                       class="login-input"
+                       autocomplete="current-password" />
+            </div>
+
+            <!-- Remember Me -->
+            <div class="remember-me">
+                <input asp-for="RememberMe" />
+                <label asp-for="RememberMe"></label>
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="login-button">
+                Login
+            </button>
+
+        </form>
+
+        <!-- Login Message -->
+        <div id="loginMessage" class="login-message"></div>
+
+        <!-- Divider -->
+        <div class="login-divider">
+            <span>OR</span>
+        </div>
+
+        <!-- Google Login -->
+        <button type="button"
+                id="googleLoginButton"
+                class="google-button">
+
+            <span class="google-icon">G</span>
+            <span>Sign in with Google</span>
+
+        </button>
+
+    </div>
+
+    <!-- Registration -->
+    <div class="register-section">
+
+        <div class="register-line">
+            Don't have an account?
+        </div>
+
+        <a asp-controller="Account"
+           asp-action="Register"
+           class="register-link">
+            Create new account
+        </a>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/login.js"></script>
+}

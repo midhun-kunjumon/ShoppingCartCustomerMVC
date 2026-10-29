@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Cartly</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/css/home.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/ShoppingCartCustomerMVC.styles.css"
+          asp-append-version="true" />
+</head>
+
+<body data-customer-id="@(User.Identity != null && User.Identity.IsAuthenticated ? User.FindFirstValue(ClaimTypes.NameIdentifier) : "")">
+@using System.Security.Claims
+
+    <!-- PRE-LOGIN NAVBAR -->
+    <header class="prelogin-navbar">
+
+        <div class="prelogin-top">
+
+            <div class="container-fluid px-4">
+
+                <div class="d-flex align-items-center w-100">
+
+                    <!-- Logo -->
+                    <a class="prelogin-logo"
+                       asp-controller="Home"
+                       asp-action="Index">
+
+                        <img src="~/images/cartly-logo.png"
+                             alt="Cartly" />
+
+                    </a>
+
+
+                    <!-- Search -->
+                    <form class="prelogin-search" action="/Product/Search" method="get">
+
+                        <span class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+
+                        <input type="search"
+                               name="query"
+                               placeholder="Search for Products, Brands and More"
+                               aria-label="Search"
+                               value="@Context.Request.Query["query"]" />
+
+                    </form>
+
+
+                    <!-- Right Side -->
+                    <div class="prelogin-actions">
+                        
+                        <a asp-controller="Wishlist" asp-action="Index" class="prelogin-cart me-3">
+                            <i class="fa-regular fa-heart"></i>
+                            <span>Wishlist</span>
+                        </a>
+
+                        <a asp-controller="Cart" asp-action="Index" class="prelogin-cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span>Cart</span>
+                        </a>
+
+                        <!-- PreLogin or Account button -->
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <!-- Account -->
+                            <div class="account-dropdown">
+
+                                <button class="account-button"
+                                        type="button"
+                                        id="accountDropdown"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+
+                                    <i class="fa-regular fa-circle-user"></i>
+
+                                    <span>Account</span>
+
+                                    <i class="fa-solid fa-chevron-down account-arrow"></i>
+
+                                </button>
+
+                                <ul class="dropdown-menu account-menu"
+                                    aria-labelledby="accountDropdown">
+
+                                    <li class="account-menu-title">
+                                        My Account
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/Account/Profile">
+                                            <i class="fa-regular fa-user"></i>
+                                            <span>My Profile</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/Order/Index">
+                                            <i class="fa-solid fa-box"></i>
+                                            <span>Orders</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/Wishlist/Index">
+                                            <i class="fa-regular fa-heart"></i>
+                                            <span>Wishlist</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/Cart/Index">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                            <span>Cart</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <hr class="dropdown-divider" />
+                                    </li>
+
+                                    <li>
+                                        <form asp-controller="Account"
+                                              asp-action="Logout"
+                                              method="post">
+
+                                            <button type="submit" class="dropdown-item logout-item">
+                                                <i class="fa-solid fa-right-from-bracket"></i>
+                                                <span>Logout</span>
+                                            </button>
+
+                                        </form>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <!-- Login -->
+                            <a class="prelogin-login"
+                               asp-controller="Account"
+                               asp-action="Login">
+
+                                Login
+
+                            </a>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CATEGORY BAR -->
+        <div class="prelogin-category-bar">
+
+            <div class="container-fluid px-4">
+
+                <div class="prelogin-categories">
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Fashion">
+
+                        <span>
+                            <i class="fa-solid fa-shirt"></i>
+                        </span>
+
+                        <strong>Fashion</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Mobiles">
+
+                        <span>
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </span>
+
+                        <strong>Mobiles</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Electronics">
+
+                        <span>
+                            <i class="fa-solid fa-laptop"></i>
+                        </span>
+
+                        <strong>Electronics</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Beauty">
+
+                        <span>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </span>
+
+                        <strong>Beauty</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Home">
+
+                        <span>
+                            <i class="fa-solid fa-house"></i>
+                        </span>
+
+                        <strong>Home</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Appliances">
+
+                        <span>
+                            <i class="fa-solid fa-blender"></i>
+                        </span>
+
+                        <strong>Appliances</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Toys, Baby">
+
+                        <span>
+                            <i class="fa-solid fa-baby"></i>
+                        </span>
+
+                        <strong>Toys, Baby</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Auto Accessories">
+
+                        <span>
+                            <i class="fa-solid fa-car"></i>
+                        </span>
+
+                        <strong>Auto Accessories</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Sports">
+
+                        <span>
+                            <i class="fa-solid fa-baseball-bat-ball"></i>
+                        </span>
+
+                        <strong>Sports</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Furniture">
+
+                        <span>
+                            <i class="fa-solid fa-couch"></i>
+                        </span>
+
+                        <strong>Furniture</strong>
+
+                    </a>
+
+
+                    <a href="/Category/Index"
+                       class="prelogin-category"
+                       data-category-name="Books">
+
+                        <span>
+                            <i class="fa-solid fa-book"></i>
+                        </span>
+
+                        <strong>Books</strong>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- PAGE CONTENT -->
+    <main role="main">
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="border-top mt-5 py-4">
+
+        <div class="container text-center">
+
+            <p class="mb-1">
+                © 2026 Cartly
+            </p>
+
+            <small class="text-muted">
+                Your simple online shopping experience.
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/api.js"
+            asp-append-version="true"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

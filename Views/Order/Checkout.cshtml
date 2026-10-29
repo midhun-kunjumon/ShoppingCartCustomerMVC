@@ -1,0 +1,132 @@
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<link rel="stylesheet" href="~/css/order.css" asp-append-version="true" />
+
+<section class="order-page">
+    <div class="container">
+
+        <div class="order-header">
+            <h1>Checkout & Order Review</h1>
+        </div>
+
+        <div id="checkout-loading" class="text-center py-4 text-muted">
+            <div class="spinner-border text-primary me-2" role="status"></div>
+            Loading order details...
+        </div>
+
+        <div id="checkout-empty" class="text-center py-5 bg-white rounded shadow-sm" style="display:none;">
+            <div class="mb-3 display-4 text-muted">🛒</div>
+            <h3>Your cart is empty</h3>
+            <p class="text-muted">You have no items in your cart to checkout.</p>
+            <a href="/" class="btn btn-primary mt-2">Continue Shopping</a>
+        </div>
+
+        <div id="checkout-content" class="checkout-layout" data-customer-id="@ViewBag.CustomerId" style="display:none;">
+
+            <div class="checkout-main">
+
+                <!-- 1. Customer / Delivery Information -->
+                <div class="checkout-section-card">
+                    <h2>1. Customer & Delivery Information</h2>
+
+                    <div class="delivery-info-grid mb-3">
+                        <div>
+                            <label class="form-label text-muted small font-weight-bold">FULL NAME</label>
+                            <input type="text" id="cust-name" class="form-control" required />
+                        </div>
+                        <div>
+                            <label class="form-label text-muted small font-weight-bold">EMAIL ADDRESS</label>
+                            <input type="email" id="cust-email" class="form-control" readonly />
+                        </div>
+                        <div>
+                            <label class="form-label text-muted small font-weight-bold">PHONE NUMBER</label>
+                            <input type="tel" id="cust-phone" class="form-control" placeholder="Enter contact number" />
+                        </div>
+                        <div>
+                            <label class="form-label text-muted small font-weight-bold">DELIVERY CITY / ADDRESS</label>
+                            <input type="text" id="cust-city" class="form-control" placeholder="Enter city/address" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Order Review Items -->
+                <div class="checkout-section-card">
+                    <h2>2. Order Review Items</h2>
+                    <div id="checkout-items-container">
+                    </div>
+                </div>
+
+                <!-- 3. Payment Method -->
+                <div class="checkout-section-card">
+                    <h2>3. Select Payment Method</h2>
+
+                    <div class="payment-option">
+                        <input type="radio" id="pay-cod" name="PaymentMethod" value="Cash on Delivery" checked />
+                        <label for="pay-cod">
+                            <strong>Cash on Delivery (COD)</strong>
+                            <div class="text-muted small">Pay with cash when your order is delivered to your door.</div>
+                        </label>
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" id="pay-card" name="PaymentMethod" value="Online Payment" />
+                        <label for="pay-card">
+                            <strong>Online Payment / Credit / Debit Card</strong>
+                            <div class="text-muted small">Simulated instant online card / netbanking payment.</div>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Order Summary Sidebar -->
+            <div class="checkout-sidebar">
+
+                <div class="order-summary-card">
+                    <h2>Order Summary</h2>
+
+                    <div class="summary-row">
+                        <span>Cart Items Subtotal</span>
+                        <span id="summary-subtotal">₹0.00</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span class="text-success font-weight-bold">FREE</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Expected Delivery</span>
+                        <span id="checkout-expected-delivery" class="text-success font-weight-bold">-</span>
+                    </div>
+
+                    <div class="summary-row summary-total">
+                        <span>Total Payable</span>
+                        <span id="summary-total">₹0.00</span>
+                    </div>
+
+                    <button type="button" id="placeOrderBtn" class="place-order-btn">
+                        Place Order
+                    </button>
+
+                    <div class="text-center mt-3">
+                        <a href="/Cart/Index" class="text-muted small text-decoration-underline">
+                            Return to Cart
+                        </a>
+                    </div>
+
+                    <div id="checkoutMessage" class="mt-3 text-danger small font-weight-bold text-center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/checkout.js" asp-append-version="true"></script>
+}
